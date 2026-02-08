@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -35,10 +36,26 @@ Restaurant newRestaurant() {
     getline(cin, newR.cuisine);
 
     cout << "Enter year opened: ";
-    cin >> newR.year; // TODO input validation
+    // input validation
+    time_t now = time(0);
+    tm* local = localtime(&now);
+    int currYear = local->tm_year + 1900;
+    int yearIn = 0;
+    while (!(0 < yearIn && yearIn <= currYear)){
+        cin >> yearIn;
+        if (!(0 < yearIn && yearIn <= currYear))
+            cout << "Enter a valid year greater than 0 and no later than this year: ";
+    }
 
     cout << "Enter rating (A-F): ";
-    cin >> newR.rating; // TODO input validation
+    // input validation
+    char charIn = 'Z';
+    while (!(65 <= charIn && charIn <= 70)){
+        cin >> charIn;
+        if (!(65 <= charIn && charIn <= 70))
+            cout << "rating must be a character A, B, C, D, E, F: ";
+    }
+    newR.rating = charIn;
 
     return newR;
 }
