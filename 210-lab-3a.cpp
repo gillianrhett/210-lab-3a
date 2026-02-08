@@ -18,20 +18,21 @@ Restaurant newRestaurant(); // attributes are set by user input
 void printRestaurant(Restaurant); // displays the Restaurant's attributes
 
 int main() {
-    
+    Restaurant r = newRestaurant();
+    printRestaurant(r);
     return 0;
 }
 
 Restaurant newRestaurant() {
     Restaurant newR;
     cout << "Enter restaurant name: ";
-    cin >> newR.name;
+    getline(cin, newR.name);
 
     cout << "Enter address: ";
-    cin >> newR.address;
+    getline(cin, newR.address);
 
     cout << "Enter type of cuisine: ";
-    cin >> newR.cuisine;
+    getline(cin, newR.cuisine);
 
     cout << "Enter year opened: ";
     cin >> newR.year; // TODO input validation
@@ -42,6 +43,12 @@ Restaurant newRestaurant() {
     return newR;
 }
 
-void printRestaurant(Restaurant) {
-    
+void printRestaurant(Restaurant rst) {
+    cout << "\n=== Restaurant Information ===" << endl;
+    cout << "Name: " << rst.name << endl;
+    cout << "Address: " << rst.address << endl;
+    cout << "Cuisine: " << rst.cuisine << endl;
+    cout << "Year opened: " << rst.year << endl;
+    cout << "Rating: " << rst.rating << endl;
+    cout << "==============================";
 }
